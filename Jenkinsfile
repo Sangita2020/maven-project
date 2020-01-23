@@ -11,7 +11,7 @@ stage('cloning code')
 
 steps
 
-{git 'https://github.com/chaitanyapratap19/maven-project.git'
+{git 'https://github.com/Sangita2020/maven-project.git'
 }
 }
 
@@ -19,7 +19,7 @@ stage('compile my project')
 {
 steps
 {
-withMaven(jdk: 'localJDK', maven: 'localMaven') {
+withMaven(jdk: 'javaJDK', maven: 'localMaven') {
     sh 'mvn compile'
 }}}
     
@@ -27,7 +27,7 @@ stage('test my project')
 {
 steps
 {
-withMaven(jdk: 'localJDK', maven: 'localMaven') {
+withMaven(jdk: 'javaJDK', maven: 'localMaven') {
     sh 'mvn test'
 }}}
     
@@ -35,7 +35,7 @@ stage('package my project')
 {
 steps
 {
-withMaven(jdk: 'localJDK', maven: 'localMaven') {
+withMaven(jdk: 'javaJDK', maven: 'localMaven') {
     sh 'mvn package'
 }}}
     
@@ -46,7 +46,7 @@ stage('package my install')
 {
 steps
 {
-withMaven(jdk: 'localJDK', maven: 'localMaven') {
+withMaven(jdk: 'javaJDK', maven: 'localMaven') {
     sh 'mvn install'
 }}}
 	
@@ -58,7 +58,7 @@ stage('deploy to  tomcat')
 steps
 {
     sshagent(['tomcat']) {
-	 sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@172.31.82.228:/var/lib/tomcat/webapps'
+	 sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@172.31.21.234:/var/lib/tomcat/webapps'
 						}
 }
 }
