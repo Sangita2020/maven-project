@@ -11,7 +11,7 @@ stage('cloning code')
 
 steps
 
-{git 'https://github.com/Sangita2020/maven-project.git'
+{git branch: '*/master', url: 'https://github.com/Sangita2020/maven-project.git'
 }
 }
 
